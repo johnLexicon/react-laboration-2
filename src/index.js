@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import GroceryContextProvider from './contexts/GroceryContext';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <GroceryContextProvider>
     <App />
-  </React.StrictMode>,
+  </GroceryContextProvider>,
   document.getElementById('root')
 );
 

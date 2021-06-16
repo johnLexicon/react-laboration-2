@@ -1,5 +1,12 @@
+import GroceryList from './GroceryList';
+
 const Home = () => {
-  return <div>Home Page</div>;
+  return (
+    <div>
+      <h2>Home Page</h2>
+      <GroceryList />
+    </div>
+  );
 };
 
 export default Home;
