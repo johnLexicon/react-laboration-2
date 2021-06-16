@@ -7,14 +7,16 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-      </Switch>
+      <div className="container-md container-fluid">
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }
