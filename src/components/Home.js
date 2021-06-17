@@ -1,9 +1,12 @@
 import GroceryList from './GroceryList';
+import NewGroceryForm from './newGroceryForm';
+import Header from './Header';
 
 const Home = () => {
   return (
     <div>
-      <h2>Home Page</h2>
+      <Header />
+      <NewGroceryForm />
       <GroceryList />
     </div>
   );
