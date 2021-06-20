@@ -12,10 +12,6 @@ const GroceryContextProvider = (props) => {
     { id: uuidv4(), title: 'Lemons', ready: false },
   ]);
 
-  const unDoneGroceries = () => {
-    return groceries.filter((g) => !g.ready);
-  };
-
   const addGrocery = (title) => {
     const id = uuidv4();
     setGroceries([...groceries, { id, title, ready: false }]);
@@ -42,7 +38,6 @@ const GroceryContextProvider = (props) => {
         addGrocery,
         removeGrocery,
         toggleReady,
-        unDoneGroceries,
       }}
     >
       {props.children}
