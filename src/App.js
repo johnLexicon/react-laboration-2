@@ -1,9 +1,16 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { useEffect, useContext } from 'react';
+import { GroceryContext } from './contexts/GroceryContext';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 
 function App() {
+  const { dispatch } = useContext(GroceryContext);
+  useEffect(() => {
+    dispatch({ type: 'FETCH_GROCERIES' });
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       <Navbar />
