@@ -3,12 +3,12 @@ import { GroceryContext } from '../contexts/GroceryContext';
 import GroceryDetails from './GroceryDetails';
 
 const GroceryList = () => {
-  const { groceries } = useContext(GroceryContext);
+  const { state } = useContext(GroceryContext);
   return (
     <div className="my-4">
-      {groceries && (
+      {state.groceries && (
         <ul className="grocery-list list-group list-group-flush">
-          {groceries.map((g) => (
+          {state.groceries.map((g) => (
             <GroceryDetails key={g.id} grocery={g}></GroceryDetails>
           ))}
         </ul>

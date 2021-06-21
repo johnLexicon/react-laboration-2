@@ -1,43 +1,25 @@
-import { createContext, useState } from 'react';
+import { createContext, useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { groceryReducer } from '../reducers/groceryReducer.js';
 
 export const GroceryContext = createContext();
 
 const GroceryContextProvider = (props) => {
-  const [groceries, setGroceries] = useState([
-    { id: uuidv4(), title: 'Tomatoes', ready: false },
-    { id: uuidv4(), title: 'Cucumbers', ready: false },
-    { id: uuidv4(), title: 'Garlic', ready: false },
-    { id: uuidv4(), title: 'Onions', ready: false },
-    { id: uuidv4(), title: 'Lemons', ready: false },
-  ]);
-
-  const addGrocery = (title) => {
-    const id = uuidv4();
-    setGroceries([...groceries, { id, title, ready: false }]);
-  };
-
-  const removeGrocery = (id) => {
-    setGroceries(groceries.filter((g) => g.id !== id));
-  };
-
-  const toggleReady = (id) => {
-    const modifiedGroceries = groceries.map((g) => {
-      if (g.id === id) {
-        g.ready = !g.ready;
-      }
-      return g;
-    });
-    setGroceries(modifiedGroceries);
-  };
+  const [state, dispatch] = useReducer(groceryReducer, {
+    groceries: [
+      { id: uuidv4(), title: 'Tomatoes', ready: false },
+      { id: uuidv4(), title: 'Cucumbers', ready: false },
+      { id: uuidv4(), title: 'Garlic', ready: false },
+      { id: uuidv4(), title: 'Onions', ready: false },
+      { id: uuidv4(), title: 'Lemons', ready: false },
+    ],
+  });
 
   return (
     <GroceryContext.Provider
       value={{
-        groceries,
-        addGrocery,
-        removeGrocery,
-        toggleReady,
+        state,
+        dispatch,
       }}
     >
       {props.children}

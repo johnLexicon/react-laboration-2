@@ -2,12 +2,12 @@ import { GroceryContext } from '../contexts/GroceryContext';
 import { useContext, useState } from 'react';
 
 const NewGroceryForm = () => {
-  const { addGrocery } = useContext(GroceryContext);
+  const { dispatch } = useContext(GroceryContext);
   const [title, setTitle] = useState('');
 
   const onAddGrocery = (e) => {
     e.preventDefault();
-    addGrocery(title);
+    dispatch({ type: 'ADD_GROCERY', payload: { title } });
     setTitle('');
   };
   return (
