@@ -27,9 +27,6 @@ const NewGroceryForm = () => {
           }}
         />
       </div>
-      <button className="btn btn-success" type="submit">
-        Add
-      </button>
     </form>
   );
 };
