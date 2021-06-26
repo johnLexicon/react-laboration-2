@@ -41,7 +41,8 @@ export const groceryReducer = (state, action) => {
           g.title = title;
         }
         return g;
-      })
+      });
+      localStorage.setItem('groceries', JSON.stringify(editedGroceries));
       return {...state, groceries: editedGroceries};
     }
     case 'SET_EDIT_GROCERY_ID': {
