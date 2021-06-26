@@ -1,6 +1,7 @@
 import GroceryList from './GroceryList';
-import NewGroceryForm from './newGroceryForm';
+import NewGroceryForm from './NewGroceryForm';
 import Header from './Header';
+import EditGroceryForm from './EditGroceryForm';
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <Header />
       <NewGroceryForm />
       <GroceryList />
+      <EditGroceryForm/>
     </div>
   );
 };

@@ -5,7 +5,7 @@ export const groceryReducer = (state, action) => {
     case 'FETCH_GROCERIES': {
       const groceries = localStorage.getItem('groceries');
       if (!groceries) {
-        return { groceries: [] };
+        return { ...state, groceries: [] };
       }
       return { groceries: JSON.parse(groceries) };
     }
@@ -14,13 +14,13 @@ export const groceryReducer = (state, action) => {
       const id = uuidv4();
       const groceries = [...state.groceries, { id, title, ready: false }];
       localStorage.setItem('groceries', JSON.stringify(groceries));
-      return { groceries };
+      return { ...state, groceries };
     }
     case 'REMOVE_GROCERY': {
       const { id } = action.payload;
       const groceries = state.groceries.filter((g) => g.id !== id);
       localStorage.setItem('groceries', JSON.stringify(groceries));
-      return { groceries };
+      return { ...state, groceries };
     }
     case 'TOGGLE_GROCERY': {
       const { id } = action.payload;
@@ -31,7 +31,22 @@ export const groceryReducer = (state, action) => {
         return g;
       });
       localStorage.setItem('groceries', JSON.stringify(groceries));
-      return { groceries };
+      return { ...state, groceries };
+    }
+    case 'EDIT_GROCERY': {
+      const { title } = action.payload;
+      console.log(title);
+      const editedGroceries = state.groceries.map(g => {
+        if(g.id === state.editedGroceryId){
+          g.title = title;
+        }
+        return g;
+      })
+      return {...state, groceries: editedGroceries};
+    }
+    case 'SET_EDIT_GROCERY_ID': {
+      const { id } = action.payload;
+      return { ...state, editedGroceryId: id }
     }
     default:
       return state;

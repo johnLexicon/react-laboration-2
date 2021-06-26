@@ -4,7 +4,7 @@ import { groceryReducer } from '../reducers/groceryReducer.js';
 export const GroceryContext = createContext();
 
 const GroceryContextProvider = (props) => {
-  const [state, dispatch] = useReducer(groceryReducer, { groceries: null });
+  const [state, dispatch] = useReducer(groceryReducer, { groceries: null, editedGroceryId: null });
 
   return (
     <GroceryContext.Provider
