@@ -22,6 +22,10 @@ export const groceryReducer = (state, action) => {
       localStorage.setItem('groceries', JSON.stringify(groceries));
       return { ...state, groceries };
     }
+    case 'REMOVE_ALL': {
+      localStorage.setItem('groceries', JSON.stringify([]));
+      return { ...state, groceries: [] }
+    }
     case 'TOGGLE_GROCERY': {
       const { id } = action.payload;
       const groceries = state.groceries.map((g) => {
