@@ -13,8 +13,8 @@ const NewGroceryForm = () => {
   return (
     <form onSubmit={onAddGrocery}>
       <div className="form-group mb-3">
-        <label className="form-label text-light h3" htmlFor="newGrocery">
-          Grocery
+        <label className="form-label text-light h5" htmlFor="newGrocery">
+          Grocery Name:
         </label>
         <input
           required

@@ -14,8 +14,8 @@ const Header = () => {
   return (
     <div id="header" className="bg-success text-white my-5 p-2 text-center rounded shadow">
       <p className="display-1">Grocery List</p>
-      <p className="display-5">{undoneCount} {undoneCount === 1 ? 'grocery' : 'groceries'} left</p>
-      <div><button className="btn btn-secondary" disabled={undoneCount === 0} onClick={() => {dispatch({type: 'REMOVE_ALL'})}}>Clear list</button></div>
+      <p className="display-5"><span className={undoneCount > 0 ? 'text-danger' : ''}>{undoneCount}</span> {undoneCount === 1 ? 'grocery' : 'groceries'} left</p>
+      <div><button className="btn btn-secondary" onClick={() => {dispatch({type: 'REMOVE_ALL'})}}>Clear list</button></div>
     </div>
   );
 };

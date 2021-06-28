@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../assets/lexicon.jpg';
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow">
       <div className="container-fluid">
         <a
           className="navbar-brand"
@@ -25,14 +25,14 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/">
+              <NavLink className="nav-link" aria-current="page" to="/">
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <NavLink className="nav-link" to="/about">
                 About
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>

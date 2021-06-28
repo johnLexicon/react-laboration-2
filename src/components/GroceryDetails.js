@@ -4,7 +4,7 @@ import { GroceryContext } from '../contexts/GroceryContext';
 const GroceryDetails = ({ grocery }) => {
   const { dispatch } = useContext(GroceryContext);
   return (
-    <li className="list-group-item list-group-item-success border-0 p-3 mb-3 h3">
+    <li className="list-group-item list-group-item-success p-3 mb-3 h3 rounded shadow">
       <div className="row">
         <div
           className={
