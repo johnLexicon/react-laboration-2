@@ -1,4 +1,4 @@
-const About = () => {
+const About: React.FC = () => {
   return (
     <div className="container mt-5 rounded shadow h4 bg-success bg-gradient p-4 text-light">
       <h1 className="my-4">Laborationsuppfigt 2 React</h1>
