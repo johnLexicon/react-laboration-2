@@ -6,7 +6,7 @@ import Home from './components/Home';
 import About from './components/About';
 
 function App() {
-  const { dispatch } = useContext(GroceryContext);
+  const { dispatch }: any = useContext(GroceryContext);
   useEffect(() => {
     dispatch({ type: 'FETCH_GROCERIES' });
   }, [dispatch]);
