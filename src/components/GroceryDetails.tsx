@@ -1,7 +1,9 @@
 import { useContext } from 'react';
 import { GroceryContext } from '../contexts/GroceryContext';
+import { IGrocery } from '../interfaces/groceryInterfaces';
+import GroceryActionTypes from '../enums/groceryActionTypes';
 
-const GroceryDetails = ({ grocery }) => {
+const GroceryDetails: React.FC<{ grocery: IGrocery }> = ({ grocery }) => {
   const { dispatch } = useContext(GroceryContext);
   return (
     <li className="list-group-item list-group-item-success p-3 mb-3 h3 rounded shadow">
@@ -11,7 +13,10 @@ const GroceryDetails = ({ grocery }) => {
             grocery.ready ? 'col-6 grocery-title marked' : 'col-6 grocery-title'
           }
           onClick={() => {
-            dispatch({ type: 'TOGGLE_GROCERY', payload: { id: grocery.id } });
+            dispatch({
+              type: GroceryActionTypes.TOGGLE_GROCERY,
+              payload: { id: grocery.id }
+            });
           }}
         >
           {grocery.title}
@@ -20,8 +25,8 @@ const GroceryDetails = ({ grocery }) => {
           <button
             onClick={() => {
               dispatch({
-                type: 'SET_EDIT_GROCERY_ID',
-                payload: { id: grocery.id },
+                type: GroceryActionTypes.SET_EDIT_GROCERY_ID,
+                payload: { id: grocery.id }
               });
             }}
             className="btn btn-success me-3"
@@ -32,7 +37,10 @@ const GroceryDetails = ({ grocery }) => {
           </button>
           <button
             onClick={() =>
-              dispatch({ type: 'REMOVE_GROCERY', payload: { id: grocery.id } })
+              dispatch({
+                type: GroceryActionTypes.REMOVE_GROCERY,
+                payload: { id: grocery.id }
+              })
             }
             className="btn btn-danger"
           >

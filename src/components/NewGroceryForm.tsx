@@ -1,13 +1,14 @@
 import { GroceryContext } from '../contexts/GroceryContext';
 import { useContext, useState } from 'react';
+import GroceryActionTypes from '../enums/groceryActionTypes';
 
-const NewGroceryForm = () => {
+const NewGroceryForm: React.FC = () => {
   const { dispatch } = useContext(GroceryContext);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState<string>('');
 
-  const onAddGrocery = (e) => {
+  const onAddGrocery = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch({ type: 'ADD_GROCERY', payload: { title } });
+    dispatch({ type: GroceryActionTypes.ADD_GROCERY, payload: { title } });
     setTitle('');
   };
   return (
@@ -22,7 +23,7 @@ const NewGroceryForm = () => {
           value={title}
           className="form-control bg-success text-light h3"
           type="text"
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setTitle(e.target.value);
           }}
         />
