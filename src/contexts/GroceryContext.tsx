@@ -1,31 +1,25 @@
 import { createContext, useReducer } from 'react';
 import { groceryReducer } from '../reducers/groceryReducer';
-import { IGroceryState } from '../interfaces/IGroceryState';
-import { IGroceryContext } from '../interfaces/IGroceryContext';
+import { IGroceryState, IGroceryAction } from '../interfaces/groceryInterfaces';
 
-interface IProps {
-  children: React.ReactNode;
-}
-
-export const GroceryContext = createContext<undefined | IGroceryContext>(
-  undefined
-);
+export const GroceryContext = createContext<{
+  state: IGroceryState;
+  dispatch: React.Dispatch<IGroceryAction>;
+}>({
+  state: { groceries: [], editedGroceryId: undefined },
+  dispatch: () => undefined
+});
 
 const initialState: IGroceryState = {
   groceries: [],
   editedGroceryId: null
 };
 
-const GroceryContextProvider = (props: IProps) => {
+const GroceryContextProvider: React.FC = (props) => {
   const [state, dispatch] = useReducer(groceryReducer, initialState);
 
   return (
-    <GroceryContext.Provider
-      value={{
-        state,
-        dispatch
-      }}
-    >
+    <GroceryContext.Provider value={{ state, dispatch }}>
       {props.children}
     </GroceryContext.Provider>
   );

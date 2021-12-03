@@ -1,38 +1,41 @@
 import { v4 as uuidv4 } from 'uuid';
-import { IGroceryState } from '../interfaces/IGroceryState';
-import { IGroceryAction } from '../interfaces/IGroceryAction';
-import { IGrocery } from '../interfaces/IGrocery';
+import {
+  IGroceryState,
+  IGroceryAction,
+  IGrocery
+} from '../interfaces/groceryInterfaces';
+import GroceryActionTypes from '../enums/groceryActionTypes';
 
 export const groceryReducer = (
   state: IGroceryState,
   action: IGroceryAction
 ): IGroceryState => {
   switch (action.type) {
-    case 'FETCH_GROCERIES': {
+    case GroceryActionTypes.FETCH_GROCERIES: {
       const groceries: string | null = localStorage.getItem('groceries');
       if (!groceries) {
         return { ...state, groceries: [] };
       }
       return { ...state, groceries: JSON.parse(groceries) };
     }
-    case 'ADD_GROCERY': {
+    case GroceryActionTypes.ADD_GROCERY: {
       const { title } = action.payload;
       const id = uuidv4();
       const groceries = [...state.groceries, { id, title, ready: false }];
       localStorage.setItem('groceries', JSON.stringify(groceries));
       return { ...state, groceries };
     }
-    case 'REMOVE_GROCERY': {
+    case GroceryActionTypes.REMOVE_GROCERY: {
       const { id } = action.payload;
       const groceries = state.groceries.filter((g: IGrocery) => g.id !== id);
       localStorage.setItem('groceries', JSON.stringify(groceries));
       return { ...state, groceries };
     }
-    case 'REMOVE_ALL': {
+    case GroceryActionTypes.REMOVE_ALL: {
       localStorage.setItem('groceries', JSON.stringify([]));
       return { ...state, groceries: [] };
     }
-    case 'TOGGLE_GROCERY': {
+    case GroceryActionTypes.TOGGLE_GROCERY: {
       const { id } = action.payload;
       const groceries = state.groceries.map((g) => {
         if (g.id === id) {
@@ -43,7 +46,7 @@ export const groceryReducer = (
       localStorage.setItem('groceries', JSON.stringify(groceries));
       return { ...state, groceries };
     }
-    case 'EDIT_GROCERY': {
+    case GroceryActionTypes.EDIT_GROCERY: {
       const { title } = action.payload;
       const editedGroceries = state.groceries.map((g: IGrocery) => {
         if (g.id === state.editedGroceryId) {
@@ -54,7 +57,7 @@ export const groceryReducer = (
       localStorage.setItem('groceries', JSON.stringify(editedGroceries));
       return { ...state, groceries: editedGroceries };
     }
-    case 'SET_EDIT_GROCERY_ID': {
+    case GroceryActionTypes.SET_EDIT_GROCERY_ID: {
       const { id } = action.payload;
       return { ...state, editedGroceryId: id };
     }

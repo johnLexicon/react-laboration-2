@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/lexicon.jpg';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success shadow">
       <div className="container-fluid">
