@@ -1,19 +1,19 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { GroceryContext } from '../contexts/GroceryContext';
+import GroceryActionTypes from '../enums/groceryActionTypes';
 
-const EditGroceryForm = () => {
+const EditGroceryForm: React.FC = () => {
   const { dispatch } = useContext(GroceryContext);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState<string>('');
 
   const editGrocery = () => {
-    dispatch({ type: 'EDIT_GROCERY', payload: { title } });
+    dispatch({ type: GroceryActionTypes.EDIT_GROCERY, payload: { title } });
     setTitle('');
   };
   return (
     <div
       className="modal fade"
       id="editGroceryModal"
-      tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
@@ -40,7 +40,7 @@ const EditGroceryForm = () => {
               name="groceryTitle"
               id="groceryTitle"
               value={title}
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setTitle(e.target.value);
               }}
             />
