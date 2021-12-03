@@ -7,9 +7,9 @@ import About from './components/About';
 import GroceryActionTypes from './enums/groceryActionTypes';
 
 function App() {
-  const { dispatch }: any = useContext(GroceryContext);
+  const { dispatch } = useContext(GroceryContext);
   useEffect(() => {
-    dispatch({ type: GroceryActionTypes.FETCH_GROCERIES });
+    dispatch({ type: GroceryActionTypes.FETCH_GROCERIES, payload: {} });
   }, [dispatch]);
 
   return (

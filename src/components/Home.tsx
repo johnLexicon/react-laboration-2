@@ -3,13 +3,13 @@ import NewGroceryForm from './NewGroceryForm';
 import Header from './Header';
 import EditGroceryForm from './EditGroceryForm';
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div>
       <Header />
       <NewGroceryForm />
       <GroceryList />
-      <EditGroceryForm/>
+      <EditGroceryForm />
     </div>
   );
 };
