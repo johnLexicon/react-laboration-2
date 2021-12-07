@@ -1,6 +1,9 @@
 const About: React.FC = () => {
   return (
-    <div className="container mt-5 rounded shadow h4 bg-success bg-gradient p-4 text-light">
+    <div
+      className="container mt-5 rounded shadow h4 bg-gradient p-4 lh-lg"
+      style={{ backgroundColor: '#d1e7dd', color: '#0f5132' }}
+    >
       <h1 className="my-4">Laborationsuppfigt 2 React</h1>
       <p>Du ska i denna laborationsuppgift göra följande:</p>{' '}
       <p>
@@ -11,12 +14,9 @@ const About: React.FC = () => {
         att jag vill kunna klarmarkera produkten så att det syns att den är
         inhandlad.När en produkt är klarmarkerad så vill jag att den ändrar
         utseende samt att denflyttas så att alla “klara”produkter hamnar längst
-        ner på sidan.
-      </p>
-      <p>
-        Det ska även gå att plocka bort produkter helt om man skulle ångra sig
-        och inte vill ha den produkten längre.Det ska även gå att tömma hela
-        listan på produkter.
+        ner på sidan. Det ska även gå att plocka bort produkter helt om man
+        skulle ångra sig och inte vill ha den produkten längre.Det ska även gå
+        att tömma hela listan på produkter.
       </p>
     </div>
   );
