@@ -1,10 +1,20 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { GroceryContext } from '../contexts/GroceryContext';
 import GroceryActionTypes from '../enums/groceryActionTypes';
+import { IGrocery } from './../interfaces/groceryInterfaces';
 
 const EditGroceryForm: React.FC = () => {
-  const { dispatch } = useContext(GroceryContext);
+  const { state, dispatch } = useContext(GroceryContext);
   const [title, setTitle] = useState<string>('');
+
+  useEffect(() => {
+    const currentGrocery = state.groceries.find(
+      (g: IGrocery) => g.id === state.editedGroceryId
+    );
+    if (!currentGrocery) return;
+    const currentTitle = currentGrocery!.title;
+    setTitle(currentTitle ? currentTitle : '');
+  }, [state.editedGroceryId, state.groceries]);
 
   const editGrocery = () => {
     dispatch({ type: GroceryActionTypes.EDIT_GROCERY, payload: { title } });
