@@ -9,7 +9,7 @@ body {
   padding: 0 1rem;
   max-height: 430px;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .grocery-list::-webkit-scrollbar-track {
