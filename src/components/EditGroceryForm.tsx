@@ -2,8 +2,9 @@ import { useContext, useState, useEffect } from 'react';
 import { GroceryContext } from '../contexts/GroceryContext';
 import GroceryActionTypes from '../enums/groceryActionTypes';
 import { IGrocery } from './../interfaces/groceryInterfaces';
+import ReactDom from 'react-dom';
 
-const EditGroceryForm: React.FC = () => {
+const ModalOverlay: React.FC = () => {
   const { state, dispatch } = useContext(GroceryContext);
   const [title, setTitle] = useState<string>('');
 
@@ -79,6 +80,13 @@ const EditGroceryForm: React.FC = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const EditGroceryForm: React.FC = () => {
+  return ReactDom.createPortal(
+    <ModalOverlay />,
+    document.getElementById('modalContainer')!
   );
 };
 
