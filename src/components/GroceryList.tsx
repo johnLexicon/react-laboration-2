@@ -10,7 +10,8 @@ const GroceryList: React.FC = () => {
   >(null);
   useEffect(() => {
     if (!state.groceries) return;
-    const sortedGroceries: IGrocery[] = state.groceries.sort((a, b) => {
+    //sort method sorts the actual array and returns the reference to the sorted array (use slice to make a copy to no actually change the actual state.)
+    const sortedGroceries: IGrocery[] = state.groceries.slice().sort((a, b) => {
       return a.ready === b.ready ? 0 : a.ready ? 1 : -1;
     });
     setSortedByCompletion(sortedGroceries);
