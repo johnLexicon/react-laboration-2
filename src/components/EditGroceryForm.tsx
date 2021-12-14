@@ -61,9 +61,6 @@ const ModalOverlay: React.FC = () => {
               type="button"
               className="btn btn-secondary"
               data-bs-dismiss="modal"
-              onClick={() => {
-                setTitle('');
-              }}
             >
               Close
             </button>
